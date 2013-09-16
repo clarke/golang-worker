@@ -6,6 +6,8 @@ This was *heavily* influenced by:
 
 [Golang: Master/Worker in Go](http://devcry.heiho.net/2012/07/golang-masterworker-in-go.html)
 
+My main goal was to make it as reusable as possible.
+
 # Todo
 
 * Tests!
