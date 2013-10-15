@@ -33,15 +33,7 @@ func ProcessStringArray(lines []string) {
 
     // master: give work
     for i, _ := range lines {
-        // Print "100" at the completion of about every 100 items.
-        // Since we are threading, it's difficult to tell exactly
-        // when the 100th item has been processed, so this is
-        // more of a guestimated progress meter than an actual
-        // mile marker.
         cnt := (i - ncpu + 1)
-        if cnt > 0 && cnt%100 == 0 {
-            fmt.Printf("%d", cnt)
-        }
         queue <- &lines[i]
     }
 
