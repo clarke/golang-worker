@@ -33,7 +33,6 @@ func ProcessStringArray(lines []string) {
 
     // master: give work
     for i, _ := range lines {
-        cnt := (i - ncpu + 1)
         queue <- &lines[i]
     }
 
