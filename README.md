@@ -8,6 +8,51 @@ This was *heavily* influenced by:
 
 My main goal was to make it as reusable as possible.
 
-# Todo
+# Usage
 
-* Tests!
+You simply need to require the worker package: (Don't forget to run "go get" to fetch the external package)
+
+```go
+import "github.com/clarke/golang-worker"
+```
+
+And then write a function that accepts a string as its input:
+
+```go
+func HandlerFunc(s string) {
+   fmt.Printf("Received: %s\n", s) 
+}
+```
+
+Finally, set worker.WorkerFunc to your custom function from above and tell worker to process the string array:
+
+```go
+worker.WorkerFunc = HandlerFunc
+    
+var lines = []string{"foo", "bar", "car"}
+
+worker.ProcessStringArray(lines)
+```
+
+Here is a full example:
+
+```go
+package main
+
+import (
+    "fmt"
+    "github.com/clarke/golang-worker"
+)
+
+func main() {
+    worker.WorkerFunc = HandlerFunc
+    
+    var lines = []string{"foo", "bar", "car"}
+    
+    worker.ProcessStringArray(lines)
+}
+
+func HandlerFunc(s string) {
+   fmt.Printf("Received: %s\n", s)
+}
+```
